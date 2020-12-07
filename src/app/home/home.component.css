@@ -1,0 +1,21 @@
+
+.box {
+    padding: 10px;
+    border-style: solid;
+    border-color: gold;
+    margin:2px;
+    width:90%;
+}
+a:link {
+  color: coral;
+}
+
+/* visited link */
+a:visited {
+    color: red;
+}
+
+/* mouse over link */
+a:hover {
+    color: blue;
+}

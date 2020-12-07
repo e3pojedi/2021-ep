@@ -1,0 +1,10 @@
+<section class="container">
+  <h1> Delete </h1>
+Are you sure you want to delete "{{people[id].fName}}  {{people[id].lName}}" ?
+
+        <!--CLOSE--> 
+    <mat-dialog-actions>
+      <button mat-stroked-button color="warn" (click)="close()">Close</button>
+         <button  mat-button mat-mini-fab (click)="delete();close()" color="warn"  >yes</button >
+    </mat-dialog-actions>
+</section>

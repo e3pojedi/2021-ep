@@ -1,0 +1,84 @@
+<h1> Add </h1>
+
+<div class="errorMessage">
+	{{formDataSubmittedtMessage}} {{error_duplicate_found}} {{error_emptyField}}
+</div>
+
+<form flex [formGroup]="peopleForm" (ngSubmit)="submit()">
+
+	<div fxLayout="column" fxLayoutAlign="space-around start">
+		<mat-form-field>
+			<input matInput placeholder="First name" formControlName="fName">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input matInput placeholder="Last name" formControlName="lName">
+		</mat-form-field>
+
+		<mat-form-field>
+			<input matInput types="number" placeholder="Age" formControlName="age">
+		</mat-form-field>
+		<div class="errorMessage">
+			{{error_AgeMustBeNumber}}  {{error_ageUnder18}}
+		</div>
+		<mat-form-field>
+			<input matInput placeholder="Email" formControlName="email">
+		</mat-form-field>
+		<div *ngIf="peopleForm.controls.email.errors" class="invalid-feedback">
+			<div *ngIf="peopleForm.controls.email.errors.email">Email must be a valid email address</div>
+		</div>
+
+
+		<mat-form-field>
+			<input matInput placeholder="Credit Card Number" formControlName="ccNumber"> <br>
+		</mat-form-field>
+		<div class="errorMessage">
+			{{CC_error_MustBeNumber}} {{CC_error_CannotContain_9}} {{CC_error_16_numbers}} {{CC_error_StartWith_5}}
+		</div>
+
+		<div class="register-but">
+			<button mat-raised-button color="primary">submit</button>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+<br> {{ peopleForm.value | json }}
+
+<div>

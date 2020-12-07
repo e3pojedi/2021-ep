@@ -1,0 +1,52 @@
+<h2 class="header">ADDING FIELDS</h2>
+<div FlexLayout row wrap>
+			<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+				<div class="display">
+					<strong>Added to the hobbies array </strong><br> {{registerForm.value | json}}
+				</div>
+
+				<div formArrayName="hobbies" color="primary" class="FormControlBox">
+					<button type="button" mat-raised-button (click)="addHobby()">Add Hobby 	</button>
+
+					<table width="100%" border=0>
+						<div *ngFor="let hobby of hobbies.controls; let i = index">
+							<tr>
+								<td width="80%">
+									<mat-form-field appearance="outline">
+										<mat-label>Hobby</mat-label>
+										<input placeholder="add a hobby" fxFlex matInput [formControlName]="i">
+									</mat-form-field>
+								</td>
+								<td width="20%">
+									<button mat-mini-fab mat-raised-button (click)="deleteHobby(i)">Delete </button>
+								</td>
+							</tr>
+						</div>
+					</table>
+
+				</div>
+
+
+				<div class="register-but">
+					<button fxFlex mat-raised-button>Submit</button>
+				</div>
+
+
+			</form>
+
+</div>
+
+
+	<div class="display">
+		<strong>Hobbies retrived from service</strong><br>
+		<div *ngFor="let item of people">
+			Hobbies: {{item.hobbies}} <br>
+			<mat-divider class="divider"></mat-divider>
+		</div>
+
+	</div>
+
+
+

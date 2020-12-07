@@ -1,0 +1,46 @@
+
+<h1> Add </h1>
+
+
+	<form [formGroup]="peopleForm" (ngSubmit)="submit()">
+
+
+
+			<div fxFlex fxLayout="row wrap" fxLayoutGap="20px">
+
+				<mat-form-field>
+					<input matInput placeholder="First name" formControlName="fName">
+				</mat-form-field>
+
+				<mat-form-field>
+					<input matInput placeholder="Last name" formControlName="lName">
+				</mat-form-field>
+    
+
+				<mat-form-field>
+					<input matInput  types="number"  placeholder="Age" formControlName="age">
+				</mat-form-field>
+
+				<mat-form-field>
+					<input  matInput placeholder="Email" formControlName="email">
+				</mat-form-field>
+
+                        
+				<mat-form-field>
+					<input  matInput  placeholder="Credit Card Number" formControlName="ccNumber"> <br>
+				</mat-form-field>
+
+			<div fxFlex class="register-but">
+				<button   mat-raised-button color="primary">submit</button>
+			</div>
+
+			</div>
+
+
+	
+
+	</form>
+	<br> {{ peopleForm.value | json }}
+
+
+

@@ -1,0 +1,53 @@
+<section>
+  <mat-sidenav-container hasBackdrop="true">
+    <mat-sidenav #snav mode="'over'" [fixedInViewport]="true">
+      <!--MENU ITEMS =====================1=============  -->
+      <mat-nav-list>
+        <mat-list-item routerLink="/home" (click)="close()">
+          <mat-icon matListIcon>home</mat-icon>
+          Home
+        </mat-list-item>
+
+        <mat-list-item routerLink="/feelingscheckup" (click)="close()">
+          <mat-icon matListIcon>accessibility_new</mat-icon>
+          Checkup
+        </mat-list-item>
+        <mat-list-item routerLink="/oldhome" (click)="close()">
+          <mat-icon matListIcon>accessibility_new</mat-icon>
+          Old Home
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- ROUTER -->
+      <router-outlet></router-outlet>
+      <!-- end router -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!----------TOP NAV BAR----------->
+  <mat-toolbar color="primary" class="topBar">
+    <div>
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div fxFlex></div>
+    <div>
+      CODE EXAMPLES
+    </div>
+    <div fxFlex></div>
+  </mat-toolbar>
+  <!-- end top nav bar-->
+
+  <!---------FOOTER------------->
+  <mat-toolbar color="primary" class="footer">
+    <div class="footerMenu">
+      footer
+    </div>
+  </mat-toolbar>
+  <!-- end footer-->
+
+  <section></section>
+</section>

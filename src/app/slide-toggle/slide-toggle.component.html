@@ -1,0 +1,21 @@
+
+    <h2 class="example-h2">Slide-Toggle configuration</h2>
+<div class="display">
+	<strong>Submitted value in the Register Form: </strong><br> 
+{{this.formValues | json}}
+</div>
+
+<div fxLayout="row " fxLayoutGap="10px">
+	<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+ <mat-slide-toggle  formControlName="slideToggle">Slide me!</mat-slide-toggle>
+ 
+
+		<div class="register-but">
+			<button fxFlex mat-raised-button>submit</button>
+		</div>
+
+
+	</form>
+</div>

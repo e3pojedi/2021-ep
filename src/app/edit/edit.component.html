@@ -1,0 +1,79 @@
+
+     <h1> EDIT </h1>
+ 
+
+<div  fxLayout="row wrap" >
+	<div class="col">
+		<h3> ITEM</h3>
+Id: {{id}} <br> Name: {{people[id].fName}} {{people[id].lName}} <br> Job: {{people[id].job}} <br> Age: {{people[id].age}}
+		<br> Email: {{people[id].email}}
+		<br> Phone: {{people[id].phone}} <br> Credit Card Number: {{people[id].ccNumber}}
+	</div>
+
+ <p class="edit-submitted-message">
+		{{message}} <br>
+		<button mat-button [routerLink]="['/list']" [ngClass]="[bntStyle]" color="primary">Back</button>
+       </p>
+	<div class="col" fxLayout="row wrap">
+		<h3> EDIT</h3>
+
+	<form  [formGroup]="peopleForm" (ngSubmit)="submitEdit()">
+
+				<div  >
+
+					<div >
+             <strong>  First Name : </strong>
+						<mat-form-field>
+							<input matInput formControlName="fName">
+						</mat-form-field>
+					</div>
+					<div >
+						<strong>  	Last Name :</strong>
+						<mat-form-field>
+							<input matInput formControlName="lName">
+						</mat-form-field>
+					</div>
+         <div >
+					<strong>  Age:</strong>
+					<mat-form-field>
+						<input matInput formControlName="age">
+					</mat-form-field>
+          </div>
+<div >
+          			<strong>  Email:</strong>
+					<mat-form-field>
+						<input matInput formControlName="email">
+					</mat-form-field>
+          </div>
+
+					<div >
+						<strong>  Credit Card Number:</strong>
+						<mat-form-field>
+							<input matInput formControlName="ccNumber">
+						</mat-form-field>
+					</div>
+				</div>
+
+				<br>
+
+				<button type="submit" mat-raised-button color="warn">Submit</button>
+        
+			</form>
+
+	</div>
+
+
+
+</div>
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

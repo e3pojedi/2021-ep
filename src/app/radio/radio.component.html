@@ -1,0 +1,27 @@
+<div class="display">
+	<strong>Submitted value in the Register Form: </strong><br> {{formValues |json}}
+</div>
+
+<div fxLayout="row " fxLayoutGap="10px">
+
+	<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+		<div class="radio-group">
+			<label>Gender</label>
+			<mat-radio-group class="example-radio-group" formControlName="gender">
+				<mat-radio-button class="example-radio-button" *ngFor="let gender of genders" name="gender" [value]="gender">
+					{{gender}}
+				</mat-radio-button>
+			</mat-radio-group>
+		</div>
+
+
+
+		<div class="register-but">
+			<button fxFlex mat-raised-button>submit</button>
+		</div>
+
+
+	</form>
+</div>

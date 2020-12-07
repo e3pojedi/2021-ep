@@ -1,0 +1,28 @@
+<h2 >CHECKBOXES</h2>
+<div FlexLayout row wrap>
+	<div class="display">
+		<strong>Current value in the Register Form: </strong><br> {{registerForm.value | json}}
+	</div>
+
+
+	<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+		<div formArrayName="products" class="products">
+			<label>Products</label>
+			<div *ngFor="let product of productsGetter.controls; let i=index">
+				<mat-checkbox [formControlName]="i">
+					{{products[i].name}}
+				</mat-checkbox>
+			</div>
+		</div>
+
+
+		<div class="register-but">
+			<button fxFlex mat-raised-button>Submit</button>
+		</div>
+	</form>
+
+
+	<div class="display">
+		<strong>Submitted and returned form the dataservice: </strong><br> {{display | json}}
+	</div>
+</div>

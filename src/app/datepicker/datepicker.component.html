@@ -1,0 +1,43 @@
+<h2 class="header">DATES</h2>
+  <p> Note: when you have more then one datepicker in your form, make sure you name the three places in each datepick field uniquetly.</p>
+<div FlexLayout row wrap>
+ 
+
+			<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+
+	<div class="display">
+      <strong>Current value in the Register Form: </strong><br>
+    {{registerForm.value | json}}
+		</div>
+          <!--DATEPICKER 1-->
+					<mat-form-field appearance="outline">
+						<input fxFlex formControlName="dob" matInput [matDatepicker]="picker" placeholder="Choose a date 1">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+          
+          <!--DATEPICKER 2-->
+					<mat-form-field appearance="outline">
+						<input fxFlex formControlName="dob2" matInput [matDatepicker]="picker2" placeholder="Choose a date 2">
+						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+						<mat-datepicker #picker2></mat-datepicker>
+					</mat-form-field>
+
+				<div class="register-but">
+					<button fxFlex mat-raised-button >submit</button>
+				</div>
+
+    	<div class="display">
+      <strong>Value submitted: </strong><br>
+  DOB: {{display_dob }}  <br>
+  DOB2: {{display_dob2 }}
+		</div>
+
+
+
+			</form>
+
+	
+  
+</div>

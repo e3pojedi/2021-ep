@@ -1,0 +1,143 @@
+<h2 class="example-h2">Feelings Checkup</h2>
+
+<!--Boxes where questions are in-->
+
+
+
+
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+	<mat-step [stepControl]="firstFormGroup">
+		<form [formGroup]="firstFormGroup">
+			<!-- slider 1-->
+			<ng-template matStepLabel>How are you feeling?</ng-template>
+			<strong>How content are you feeling today? </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="10" min="1" step="1"
+						thumbLabel="true" tickInterval="1" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+
+			<ng-template matStepLabel>How are you feeling?</ng-template>
+			<strong>How calm are you feeling today? </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="10" min="1" step="1"
+						thumbLabel="true" tickInterval="1" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+
+			<ng-template matStepLabel>How are you feeling?</ng-template>
+			<strong>How clear are you feeling today? </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="10" min="1" step="1"
+						thumbLabel="true" tickInterval="1" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+			<div>
+				<button mat-button matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+	<mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+		<form [formGroup]="secondFormGroup">
+			<ng-template matStepLabel>Further Questions</ng-template>
+
+			<strong>How much sleep did you get last night? </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="12" min="0"
+						step="0.5" thumbLabel="true" tickInterval="2" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+
+			<strong>How much exercise have you done today? (minutes) </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="120" min="0" step="1"
+						thumbLabel="true" tickInterval="10" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+
+
+
+			<div>
+				<button mat-button matStepperPrevious>Back</button>
+				<button mat-button matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+
+	<mat-step [stepControl]="thirdFormGroup" label="Fill out your address">
+		<form [formGroup]="secondFormGroup">
+			<ng-template matStepLabel>Label Yourself</ng-template>
+
+			<mat-form-field class="example-chip-list">
+				<mat-chip-list #chipList>
+					<mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+						(removed)="remove(fruit)">
+						{{fruit}}
+						<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					</mat-chip>
+					<input
+      placeholder="Describe how you're feeling"
+      #fruitInput
+      [formControl]="fruitCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+					<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+						<mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+							{{fruit}}
+						</mat-option>
+					</mat-autocomplete>
+			</mat-form-field>
+
+
+
+			<div>
+				<button mat-button matStepperPrevious>Back</button>
+				<button mat-button matStepperNext>Next</button>
+			</div>
+		</form>
+	</mat-step>
+
+	<mat-step>
+		<ng-template matStepLabel>Done!</ng-template>
+     <p>Take a minute to reflect on today:</p> 
+		  <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Make a note reflecting on today - what's on your mind?"></textarea>
+      </mat-form-field>
+		
+    <div class="register-but" routerLink="/feelingsfeedback" (click)="onSubmit()">
+			<button fxFlex mat-raised-button>Save and Submit Answers for Analysis!</button>
+		</div>
+		<div>
+			<button mat-button matStepperPrevious>Back</button>
+			<button mat-button (click)="stepper.reset()">Reset</button>
+		</div>
+	</mat-step>
+</mat-horizontal-stepper>
+
+
+

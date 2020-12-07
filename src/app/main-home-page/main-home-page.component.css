@@ -1,0 +1,19 @@
+.example-card {
+  min-width: 400px;
+  max-width: 400px;
+  min-height: 325px;
+  max-height: 330px;
+  display: inline-block;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+h3 {
+  width: 250px;
+  height: 1.4em;
+  margin-bottom: 0;
+  text-align: justify;
+}
