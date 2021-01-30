@@ -124,12 +124,12 @@
 
 	<mat-step>
 		<ng-template matStepLabel>Done!</ng-template>
-     <p>Take a minute to reflect on today:</p> 
-		  <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Make a note reflecting on today - what's on your mind?"></textarea>
-      </mat-form-field>
-		
-    <div class="register-but" routerLink="/feelingsfeedback" (click)="onSubmit()">
+		<p>Take a minute to reflect on today:</p>
+		<mat-form-field class="example-full-width">
+			<textarea matInput placeholder="Make a note reflecting on today - what's on your mind?"></textarea>
+		</mat-form-field>
+
+		<div class="register-but" routerLink="/feelingsfeedback" (click)="onSubmit()">
 			<button fxFlex mat-raised-button>Save and Submit Answers for Analysis!</button>
 		</div>
 		<div>
@@ -138,6 +138,3 @@
 		</div>
 	</mat-step>
 </mat-horizontal-stepper>
-
-
-

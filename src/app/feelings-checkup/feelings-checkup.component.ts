@@ -30,7 +30,7 @@ import {map, startWith} from 'rxjs/operators';
 export class FeelingsCheckupComponent implements OnInit {
   registerForm: FormGroup;
   formValues: any;
-
+  
 isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -76,6 +76,7 @@ isLinear = false;
     // assigns it to a variable object called 'form'
     this.formValues = this.registerForm.value;
     alert("submitted :)");
+    
     //this.registerForm.reset();
   }
 

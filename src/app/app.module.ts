@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
@@ -45,8 +45,6 @@ import {
 import { RouterModule, Routes } from "@angular/router";
 import { PeopleService } from "./services/people.service";
 
-
-
 // COMPONENTS
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -72,8 +70,9 @@ import { BinarysortComponent } from "./binarysort/binarysort.component";
 import { FeelingsCheckupComponent } from "./feelings-checkup/feelings-checkup.component";
 import { OldHomeComponent } from "./old-home/old-home.component";
 import { FeelingsCheckupPt2Component } from "./feelings-checkup-pt2/feelings-checkup-pt2.component";
-import { FeelingsFeedbackComponent } from './feelings-feedback/feelings-feedback.component';
-import { MainHomePageComponent } from './main-home-page/main-home-page.component';
+import { FeelingsFeedbackComponent } from "./feelings-feedback/feelings-feedback.component";
+import { MainHomePageComponent } from "./main-home-page/main-home-page.component";
+import { TestingFormsComponent } from "./testing-forms/testing-forms.component";
 
 // ROUTING
 const appRoutes: Routes = [
@@ -97,6 +96,7 @@ const appRoutes: Routes = [
   { path: "feelingscheckup2", component: FeelingsCheckupPt2Component },
   { path: "feelingsfeedback", component: FeelingsFeedbackComponent },
   { path: "mainhomepage", component: MainHomePageComponent },
+  { path: "testing-forms", component: TestingFormsComponent },
 
   { path: "oldhome", component: OldHomeComponent },
 
@@ -142,7 +142,11 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
-    BrowserModule, FormsModule, MatChipsModule, BrowserAnimationsModule,MatInputModule,
+    BrowserModule,
+    FormsModule,
+    MatChipsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
     // ROUTING
     RouterModule.forRoot(
       appRoutes
@@ -173,7 +177,8 @@ const appRoutes: Routes = [
     OldHomeComponent,
     FeelingsCheckupPt2Component,
     FeelingsFeedbackComponent,
-    MainHomePageComponent
+    MainHomePageComponent,
+    TestingFormsComponent
   ],
   bootstrap: [AppComponent],
   providers: [PeopleService, DataService],
