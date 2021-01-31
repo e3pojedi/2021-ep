@@ -22,7 +22,7 @@
 			<textarea matInput placeholder="age" formControlName="age"> </textarea>
       
         <mat-error *ngIf="age.errors?.min && age.touched">
-        {{ age.errors.min.actual}} is too young!
+        {{ age.errors.min.actual}} is too young!!
       </mat-error>
 
       <mat-error *ngIf="age.errors?.max && age.touched">

@@ -1,3 +1,18 @@
-<p>
-feelings-checkup-v2 works!
-</p>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+	<mat-step [stepControl]="firstFormGroup">
+		<form [formGroup]="firstFormGroup">
+			<!-- slider 1-->
+			<ng-template matStepLabel>How are you feeling?</ng-template>
+			<strong>How content are you feeling today? </strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="10" min="1" step="1"
+						thumbLabel="true" tickInterval="1" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+		</form>
+	</mat-step>
+</mat-horizontal-stepper>
