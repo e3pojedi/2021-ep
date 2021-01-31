@@ -5,7 +5,30 @@
 
 	<mat-form-field>
 		<input matInput placeholder="email" formControlName="email">
+    <mat-error *ngIf="email.invalid && email.touched">
+      Your email isnt right
+    </mat-error>
   </mat-form-field>
+
+<mat-form-field>
+			<textarea matInput placeholder="password" formControlName="password"> </textarea>
+      <mat-hint align="end">Must have 1 letter and numer</mat-hint>
+      <mat-error *ngIf="password.invalid && password.touched">
+      your pw is awful
+    </mat-error>
+		</mat-form-field>
+
+    <mat-form-field>
+			<textarea matInput placeholder="age" formControlName="age"> </textarea>
+      
+        <mat-error *ngIf="age.errors?.min && age.touched">
+        {{ age.errors.min.actual}} is too young!
+      </mat-error>
+
+      <mat-error *ngIf="age.errors?.max && age.touched">
+        {{ age.errors.max.actual}} is too old!
+      </mat-error>
+		</mat-form-field>
 
 		<mat-form-field>
 			<textarea matInput placeholder="your msg" formControlName="message"> </textarea>
@@ -14,7 +37,7 @@
 		<mat-form-field>
 			<textarea matInput placeholder="career" formControlName="career"> </textarea>
 		</mat-form-field>
-		<h1>PhoneStuff</h1>
+		 <button mat-raised-button color="primary" (click)="sumbitAllData()">Submit data</button>
 		
 
           

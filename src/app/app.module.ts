@@ -73,6 +73,7 @@ import { FeelingsCheckupPt2Component } from "./feelings-checkup-pt2/feelings-che
 import { FeelingsFeedbackComponent } from "./feelings-feedback/feelings-feedback.component";
 import { MainHomePageComponent } from "./main-home-page/main-home-page.component";
 import { TestingFormsComponent } from "./testing-forms/testing-forms.component";
+import { FeelingsCheckupV2Component } from './feelings-checkup-v2/feelings-checkup-v2.component';
 
 // ROUTING
 const appRoutes: Routes = [
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
   { path: "feelingsfeedback", component: FeelingsFeedbackComponent },
   { path: "mainhomepage", component: MainHomePageComponent },
   { path: "testing-forms", component: TestingFormsComponent },
+  { path: "feelings-checkup-v2", component: FeelingsCheckupV2Component },
 
   { path: "oldhome", component: OldHomeComponent },
 
@@ -178,7 +180,8 @@ const appRoutes: Routes = [
     FeelingsCheckupPt2Component,
     FeelingsFeedbackComponent,
     MainHomePageComponent,
-    TestingFormsComponent
+    TestingFormsComponent,
+    FeelingsCheckupV2Component
   ],
   bootstrap: [AppComponent],
   providers: [PeopleService, DataService],
