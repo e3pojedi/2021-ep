@@ -1,0 +1,44 @@
+<form [formGroup]="myForm">
+	Value: {{myForm.value | json}}
+
+	<hr>
+
+	<mat-form-field>
+		<input matInput placeholder="email" formControlName="email">
+  </mat-form-field>
+
+		<mat-form-field>
+			<textarea matInput placeholder="your msg" formControlName="message"> </textarea>
+		</mat-form-field>
+
+		<mat-form-field>
+			<textarea matInput placeholder="career" formControlName="career"> </textarea>
+		</mat-form-field>
+		<h1>PhoneStuff</h1>
+		
+
+          
+		
+		<h1> phone stuff 2 </h1>
+		<div formArrayName="phones">
+			<div *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+				   <div formGroupName="cellPhone">
+            <mat-form-field>
+              <input matInput placeholder="area" formControlName="area">
+          </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="prefix" formControlName="prefix">
+          </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="line" formControlName="line">
+          </mat-form-field>
+          </div>
+            <button mat-raised-button color="primary" (click)="deletePhone(i)"> Delete phone</button>
+
+			</div>
+
+		</div>
+    <button mat-raised-button color="primary" (click)="addPhone()"> Add phone</button>
+</form>
