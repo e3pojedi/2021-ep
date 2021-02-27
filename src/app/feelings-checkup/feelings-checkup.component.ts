@@ -29,8 +29,9 @@ import { map, startWith } from "rxjs/operators";
 })
 export class FeelingsCheckupComponent implements OnInit {
   registerForm: FormGroup;
-  formValues: any;
-
+  formValues: String;
+  newFruitValues = [{}];
+  arrayTest = [{}];
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -62,65 +63,52 @@ export class FeelingsCheckupComponent implements OnInit {
   slider1Value: number = 0;
   updateSetting(event) {
     this.slider1Value = event.value;
-    
-    switch(this.slider1Value)
-    {
-      case 1:
-      {
+
+    switch (this.slider1Value) {
+      case 1: {
         this.happinessText[1] = "not good at all";
         break;
       }
-      case 2:
-      {
+      case 2: {
         this.happinessText[1] = "Extremely bad";
         break;
       }
-      case 3:
-      {
+      case 3: {
         this.happinessText[1] = "Very bad";
         break;
       }
-      case 4:
-      {
+      case 4: {
         this.happinessText[1] = "Could be better";
         break;
       }
-      case 5:
-      {
+      case 5: {
         this.happinessText[1] = "Feeling ok";
         break;
       }
 
-      case 6:
-      {
+      case 6: {
         this.happinessText[1] = "Feeling alright";
         break;
       }
 
-      case 7:
-      {
+      case 7: {
         this.happinessText[1] = "Feeling good";
         break;
       }
-      case 8:
-      {
+      case 8: {
         this.happinessText[1] = "Feeling very good";
         break;
       }
 
-      case 9:
-      {
+      case 9: {
         this.happinessText[1] = "Feeling fantastic!";
         break;
       }
-      case 10:
-      {
+      case 10: {
         this.happinessText[1] = "Feeling awesome!";
         break;
       }
-
     }
-    
   }
 
   //-----  Inject the FormBuilder and the DataService dependencies ------//
@@ -159,17 +147,29 @@ export class FeelingsCheckupComponent implements OnInit {
     // Get all the current 'Form Values' as an Object and
     // assigns it to a variable object called 'form'
     this.formValues = this.registerForm.value;
+    // this.arrayTest.fill(null);
     alert("submitted :)");
+    //this.formValues.push(this.fruitCtrl.value);
+    this.arrayTest.push(this.registerForm.value);
+    this.arrayTest.push(this.fruits);
+    console.log(this.arrayTest);
 
+    this.generateAnalysis();
     //this.registerForm.reset();
+  }
+
+  generateAnalysis() {
+    console.log(this.arrayTest[1][1]);
   }
 
   //  Create RegisterForm Controls and returns a FormGroup
   inaliliseForm(): FormGroup {
     return this.fb.group({
-      sliderValue: [5],
-      sliderValue1: [5],
-      sliderValue2: [5]
+      sliderValue1_1: [5],
+      sliderValue1_2: [5],
+      sliderValue1_3: [5],
+      sliderValue2_1: [5],
+      sliderValue2_2: [5]
     });
   }
 
@@ -182,9 +182,8 @@ export class FeelingsCheckupComponent implements OnInit {
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
-
       // Add our fruit
-
+      console.log(this.fruits);
       if ((value || "").trim()) {
         this.fruits.push(value.trim());
       }

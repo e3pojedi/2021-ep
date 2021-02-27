@@ -16,7 +16,7 @@
 			<div fxLayout="row " fxLayoutGap="10px"></div>
 			<div fxLayout="row " fxLayoutGap="10px">
 				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="10" min="1" step="1"
+					<mat-slider formControlName="sliderValue1_1" disabled="false" invert="false" max="10" min="1" step="1"
 						thumbLabel="true" tickInterval="1" vertical="false">
 					</mat-slider>
           
@@ -29,7 +29,7 @@
 			<div fxLayout="row " fxLayoutGap="10px"></div>
 			<div fxLayout="row " fxLayoutGap="10px">
 				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<mat-slider formControlName="sliderValue1"  disabled="false" invert="false" max="10" min="1" step="1"
+					<mat-slider formControlName="sliderValue1_2"  disabled="false" invert="false" max="10" min="1" step="1"
 						thumbLabel="true" tickInterval="1" vertical="false" [value]="slider1Value" (input)="updateSetting($event)">
             
 					</mat-slider>
@@ -44,7 +44,7 @@
 			<div fxLayout="row " fxLayoutGap="10px"></div>
 			<div fxLayout="row " fxLayoutGap="10px">
 				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<mat-slider formControlName="sliderValue2" disabled="false" invert="false" max="10" min="1" step="1"
+					<mat-slider formControlName="sliderValue1_3" disabled="false" invert="false" max="10" min="1" step="1"
 						thumbLabel="true" tickInterval="1" vertical="false">
 					</mat-slider>
 				</form>
@@ -63,7 +63,7 @@
 			<div fxLayout="row " fxLayoutGap="10px"></div>
 			<div fxLayout="row " fxLayoutGap="10px">
 				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="12" min="0"
+					<mat-slider formControlName="sliderValue2_1" disabled="false" invert="false" max="12" min="0"
 						step="0.5" thumbLabel="true" tickInterval="2" vertical="false">
 					</mat-slider>
 				</form>
@@ -74,7 +74,7 @@
 			<div fxLayout="row " fxLayoutGap="10px"></div>
 			<div fxLayout="row " fxLayoutGap="10px">
 				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-					<mat-slider formControlName="sliderValue" disabled="false" invert="false" max="120" min="0" step="1"
+					<mat-slider formControlName="sliderValue2_2" disabled="false" invert="false" max="120" min="0" step="1"
 						thumbLabel="true" tickInterval="10" vertical="false">
 					</mat-slider>
 				</form>
