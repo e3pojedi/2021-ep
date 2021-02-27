@@ -80,6 +80,17 @@
 				</form>
 			</div>
 
+      <strong>How well have you eaten today? (EG: Quantity of food intake and Nutritional content)</strong><br />
+      {{this.formValues | json}}
+			<div fxLayout="row " fxLayoutGap="10px"></div>
+			<div fxLayout="row " fxLayoutGap="10px">
+				<form fxFlex [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<mat-slider formControlName="sliderValue2_3" disabled="false" invert="false" max="10" min="0" step="1"
+						thumbLabel="true" tickInterval="1" vertical="false">
+					</mat-slider>
+				</form>
+			</div>
+
 
 
 			<div>
@@ -130,7 +141,7 @@
 		<ng-template matStepLabel>Done!</ng-template>
 		<p>Take a minute to reflect on today:</p>
 		<mat-form-field class="example-full-width">
-			<textarea matInput placeholder="Make a note reflecting on today - what's on your mind?"></textarea>
+			<textarea matInput placeholder="Make a note reflecting on today - what's on your mind?" textarea id="reflectTextArea"></textarea>
 		</mat-form-field>
 
 		<div class="register-but" routerLink="/feelingsfeedback" (click)="onSubmit()">

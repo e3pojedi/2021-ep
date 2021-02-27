@@ -33,7 +33,14 @@ export class FeelingsCheckupComponent implements OnInit {
   newFruitValues = [{}];
   formValuesJson: String;
   arrayTest = [{}];
+
+
+//results
+  resultsFeelings: number;
+  resultsReflection: string;
+
   isLinear = false;
+
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   happinessText: string[] = ["Happy, Happy, Happy"];
@@ -151,11 +158,12 @@ export class FeelingsCheckupComponent implements OnInit {
     // this.arrayTest.fill(null);
     alert("submitted :)");
     //this.formValues.push(this.fruitCtrl.value);
-
+    this.resultsReflection = (<HTMLInputElement>document.getElementById("reflectTextArea")).value;
+    
     this.arrayTest.push(this.formValues);
     this.arrayTest.push(this.fruits);
     console.log(this.arrayTest);
-
+    
     this.generateAnalysis();
     //this.registerForm.reset();
   }
@@ -163,11 +171,12 @@ export class FeelingsCheckupComponent implements OnInit {
   generateAnalysis() {
     this.formValuesJson = JSON.stringify(this.arrayTest);
     console.log(this.formValuesJson);
-    //  console.log(JSON.parse(JSON.stringify(this.arrayTest)));
-    console.log(this.arrayTest[1]);
-    //this.formValuesJson.valueOf("slider")
-  //  this.arrayTest.find("sliderValue1_1")
-    this.arrayTest.keys().sort();
+    
+    console.log(this.arrayTest[1]['sliderValue1_1']);
+   
+    this.resultsFeelings = this.arrayTest[1]['sliderValue1_1'] + this.arrayTest[1]['sliderValue1_2'] + this.arrayTest[1]['sliderValue1_3'];
+
+    
   }
 
   
@@ -179,7 +188,8 @@ export class FeelingsCheckupComponent implements OnInit {
       sliderValue1_2: [5],
       sliderValue1_3: [5],
       sliderValue2_1: [5],
-      sliderValue2_2: [5]
+      sliderValue2_2: [5],
+      sliderValue2_3: [5]
     });
   }
 
