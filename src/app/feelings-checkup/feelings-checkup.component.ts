@@ -29,8 +29,9 @@ import { map, startWith } from "rxjs/operators";
 })
 export class FeelingsCheckupComponent implements OnInit {
   registerForm: FormGroup;
-  formValues: String;
+  formValues: [{}];
   newFruitValues = [{}];
+  formValuesJson: String;
   arrayTest = [{}];
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -150,7 +151,8 @@ export class FeelingsCheckupComponent implements OnInit {
     // this.arrayTest.fill(null);
     alert("submitted :)");
     //this.formValues.push(this.fruitCtrl.value);
-    this.arrayTest.push(this.registerForm.value);
+
+    this.arrayTest.push(this.formValues);
     this.arrayTest.push(this.fruits);
     console.log(this.arrayTest);
 
@@ -159,8 +161,16 @@ export class FeelingsCheckupComponent implements OnInit {
   }
 
   generateAnalysis() {
-    console.log(this.arrayTest[1][1]);
+    this.formValuesJson = JSON.stringify(this.arrayTest);
+    console.log(this.formValuesJson);
+    //  console.log(JSON.parse(JSON.stringify(this.arrayTest)));
+    console.log(this.arrayTest[1]);
+    //this.formValuesJson.valueOf("slider")
+  //  this.arrayTest.find("sliderValue1_1")
+    this.arrayTest.keys().sort();
   }
+
+  
 
   //  Create RegisterForm Controls and returns a FormGroup
   inaliliseForm(): FormGroup {
