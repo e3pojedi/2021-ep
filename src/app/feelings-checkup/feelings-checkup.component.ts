@@ -37,6 +37,7 @@ export class FeelingsCheckupComponent implements OnInit {
 
 //results
   resultsFeelings: number;
+  resultsLifestyle: number;
   resultsReflection: string;
 
   isLinear = false;
@@ -64,6 +65,18 @@ export class FeelingsCheckupComponent implements OnInit {
     "Content",
     "Calm"
   ];
+  fruitsRanking: number[] = [
+    2,
+    0,
+    -2,
+    -2,
+    2,
+    -2,
+    -1,
+    -2,
+    1,
+    1
+  ]
 
   @ViewChild("fruitInput") fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
@@ -158,7 +171,10 @@ export class FeelingsCheckupComponent implements OnInit {
     // this.arrayTest.fill(null);
     alert("submitted :)");
     //this.formValues.push(this.fruitCtrl.value);
-    this.resultsReflection = (<HTMLInputElement>document.getElementById("reflectTextArea")).value;
+  //FIX THIS
+   // this.resultsReflection = (<HTMLInputElement>document.getElementById("reflectTextArea")).value;
+  // const isIndex = (Element) == Element == 0;
+    //this.allFruits.some("hi");
     
     this.arrayTest.push(this.formValues);
     this.arrayTest.push(this.fruits);
@@ -176,7 +192,13 @@ export class FeelingsCheckupComponent implements OnInit {
    
     this.resultsFeelings = this.arrayTest[1]['sliderValue1_1'] + this.arrayTest[1]['sliderValue1_2'] + this.arrayTest[1]['sliderValue1_3'];
 
+    this.resultsLifestyle = this.arrayTest[1]['sliderValue2_1'] + (this.arrayTest[1]['sliderValue2_2']/12) + this.arrayTest[1]['sliderValue2_3'];
     
+    for(var i=0; i < this.arrayTest[2].length; i++)
+    {
+
+    }
+    console.log(this.arrayTest[2][0]);
   }
 
   
@@ -202,6 +224,7 @@ export class FeelingsCheckupComponent implements OnInit {
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
+      
       // Add our fruit
       console.log(this.fruits);
       if ((value || "").trim()) {
