@@ -69,6 +69,7 @@ export class FeelingsCheckupComponent implements OnInit {
     { id: 9, name: "Content", score: 2 },
     { id: 10, name: "Calm", score: 2 }
   ];
+  emotionsSelected: Choices[];
   fruits: string[] = ["Happy"];
   allFruits: string[] = [
   ];
@@ -208,8 +209,10 @@ export class FeelingsCheckupComponent implements OnInit {
 
     let totalScore = 0;
     for (var i = 0; i < this.fruits.length; i++) {
-      const score = this.allFruits.findIndex(x => x == this.fruits[i]);
-      totalScore = totalScore + score;
+     // const score = this.allFruits.findIndex(x => x == this.fruits[i]);
+      for (var value of this.emotionsSelected) {
+        totalScore = totalScore + value.score;
+      }
     }
     console.log(totalScore);
     console.log(this.arrayTest[2][0]);
@@ -241,6 +244,7 @@ export class FeelingsCheckupComponent implements OnInit {
       console.log(this.fruits);
       if ((value || "").trim()) {
         this.fruits.push(value.trim());
+        this.emotionsSelected.push(this.emotionChoices.find(x => x.name == value.trim()))
       }
 
       // Reset the input value
