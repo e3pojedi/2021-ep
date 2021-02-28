@@ -22,6 +22,11 @@ import {
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
 
+class Choices {
+  id: number = 0; // default value
+  name: string = ""; // default value
+  score: number = 0;
+}
 @Component({
   selector: "app-feelings-checkup",
   templateUrl: "./feelings-checkup.component.html",
@@ -34,8 +39,7 @@ export class FeelingsCheckupComponent implements OnInit {
   formValuesJson: String;
   arrayTest = [{}];
 
-
-//results
+  //results
   resultsFeelings: number;
   resultsLifestyle: number;
   resultsReflection: string;
@@ -52,31 +56,23 @@ export class FeelingsCheckupComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   fruitCtrl = new FormControl();
   filteredFruits: Observable<string[]>;
+
+  emotionChoices: Choices[] = [
+    { id: 1, name: "Happy", score: 2 },
+    { id: 2, name: "Neutral", score: 0 },
+    { id: 3, name: "Sad", score: -2 },
+    { id: 4, name: "Stressed", score: -2 },
+    { id: 5, name: "Good times with friends", score: 2 },
+    { id: 6, name: "Overwhelmed", score: -2 },
+    { id: 7, name: "Distant", score: 1 },
+    { id: 8, name: "Conflict with others", score: -2 },
+    { id: 9, name: "Content", score: 2 },
+    { id: 10, name: "Calm", score: 2 }
+  ];
   fruits: string[] = ["Happy"];
   allFruits: string[] = [
-    "Happy",
-    "Neutral",
-    "Sad",
-    "Stressed",
-    "Good times with friends",
-    "Overwhelmed",
-    "Distant",
-    "Conflict with others",
-    "Content",
-    "Calm"
   ];
-  fruitsRanking: number[] = [
-    2,
-    0,
-    -2,
-    -2,
-    2,
-    -2,
-    -1,
-    -2,
-    1,
-    1
-  ]
+  fruitsRanking: number[] = [2, 0, -2, -2, 2, -2, -1, -2, 1, 1];
 
   @ViewChild("fruitInput") fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild("auto") matAutocomplete: MatAutocomplete;
@@ -138,12 +134,29 @@ export class FeelingsCheckupComponent implements OnInit {
     private ds: DataService,
     private _formBuilder: FormBuilder
   ) {
+    
+    for (var value of this.emotionChoices) {
+      this.allFruits.push(value.name);
+    }
+    
+    console.log(this.allFruits);
+
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) =>
         fruit ? this._filter(fruit) : this.allFruits.slice()
       )
     );
+    console.log(this.filteredFruits);
+
+    /* //affects the choices you can select
+    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) =>
+        fruit ? this._filter(fruit) : this.allFruits.slice()
+      )
+    );
+    */
   }
 
   ngOnInit() {
@@ -168,18 +181,9 @@ export class FeelingsCheckupComponent implements OnInit {
     // Get all the current 'Form Values' as an Object and
     // assigns it to a variable object called 'form'
     this.formValues = this.registerForm.value;
-    // this.arrayTest.fill(null);
-    alert("submitted :)");
-    //this.formValues.push(this.fruitCtrl.value);
-  //FIX THIS
-   // this.resultsReflection = (<HTMLInputElement>document.getElementById("reflectTextArea")).value;
-  // const isIndex = (Element) == Element == 0;
-    //this.allFruits.some("hi");
-    
     this.arrayTest.push(this.formValues);
     this.arrayTest.push(this.fruits);
     console.log(this.arrayTest);
-    
     this.generateAnalysis();
     //this.registerForm.reset();
   }
@@ -187,21 +191,29 @@ export class FeelingsCheckupComponent implements OnInit {
   generateAnalysis() {
     this.formValuesJson = JSON.stringify(this.arrayTest);
     console.log(this.formValuesJson);
-    
-    console.log(this.arrayTest[1]['sliderValue1_1']);
-   
-    this.resultsFeelings = this.arrayTest[1]['sliderValue1_1'] + this.arrayTest[1]['sliderValue1_2'] + this.arrayTest[1]['sliderValue1_3'];
 
-    this.resultsLifestyle = this.arrayTest[1]['sliderValue2_1'] + (this.arrayTest[1]['sliderValue2_2']/12) + this.arrayTest[1]['sliderValue2_3'];
-    
-    for(var i=0; i < this.arrayTest[2].length; i++)
-    {
+    console.log(this.arrayTest[1]["sliderValue1_1"]);
 
+    //calculate the value of the first 2 pages
+    this.resultsFeelings =
+      (this.arrayTest[1]["sliderValue1_1"] +
+        this.arrayTest[1]["sliderValue1_2"] +
+        this.arrayTest[1]["sliderValue1_3"]) /
+      3;
+
+    this.resultsLifestyle =
+      this.arrayTest[1]["sliderValue2_1"] +
+      this.arrayTest[1]["sliderValue2_2"] / 12 +
+      this.arrayTest[1]["sliderValue2_3"];
+
+    let totalScore = 0;
+    for (var i = 0; i < this.fruits.length; i++) {
+      const score = this.allFruits.findIndex(x => x == this.fruits[i]);
+      totalScore = totalScore + score;
     }
+    console.log(totalScore);
     console.log(this.arrayTest[2][0]);
   }
-
-  
 
   //  Create RegisterForm Controls and returns a FormGroup
   inaliliseForm(): FormGroup {
@@ -224,7 +236,7 @@ export class FeelingsCheckupComponent implements OnInit {
     if (!this.matAutocomplete.isOpen) {
       const input = event.input;
       const value = event.value;
-      
+
       // Add our fruit
       console.log(this.fruits);
       if ((value || "").trim()) {
